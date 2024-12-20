@@ -38,9 +38,8 @@ export default function ResenasCards() {
     ];
 
     return (
-        <section id="profesores" className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 py-10">
+        <section id="profesores" className="relative py-16 px-4 sm:px-6 lg:px-8  bg-gray-900">
             <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#FEAB5F]"> </div>
-
             <div className="container mx-auto">
                 <h2 className="text-3xl font-bold text-left my-4 text-black">Nuestros Profesores</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

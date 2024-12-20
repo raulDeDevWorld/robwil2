@@ -1,86 +1,41 @@
 "use client"
+import Link from 'next/link'
 
-
-export default function TeacherCards() {
-
-
-  const teachers = [
-    {
-      name: "Juan Pérez",
-      subject: "Prof. Ruso",
-      photo: "/perfil1.png",
-      items: [
-        "Especialista en Ruso",
-        "Experto en gramatica",
-        "10 años de experiencia"
-      ]
-    },
-    {
-      name: "María López",
-      subject: "Prof. Ruso",
-      photo: "/perfil2.png",
-      items: [
-        "Especialista en Ruso",
-        "Experto en gramatica",
-        "10 años de experiencia"
-      ]
-    },
-    {
-      name: "Carlos Sánchez",
-      subject: "Prof. Español",
-      photo: "perfil3.png",
-      items: [
-        "Especialista en Ruso",
-        "Experto en gramatica",
-        "10 años de experiencia"
-      ]
-    },
-  ];
-
+export default function TeacherCards({ teacher, key }) {
   return (
-    <section id="profesores" className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 py-10">
-            <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#FEAB5F]"> </div>
+    <div
+      key={key}
+      className="bg-[#FEAB5F] mx-5 shadow-md rounded-[50px] border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow p-10"
+    >
+      <img
+        src={teacher.photo}
+        alt={teacher.name}
+        className="relative left-0 right-0 mx-auto mb-8 w-48 h-48 object-cover rounded-full "
+      />
+      <h3 className="text-xl font-bold text-black text-center">{teacher.name}</h3>
 
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-left my-4 text-black">Nuestros Profesores</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {teachers.map((teacher, index) => (
-            <div
+      <div className="p-4 bg-white  border border-gray-200 rounded-[25px] my-8">
+        <p className="text-black  mb-2">{teacher.subject}</p>
+        <ul className="list-none space-y-2">
+          {teacher.items.map((item, index) => (
+            <li
               key={index}
-              className="bg-[#FEAB5F] shadow-md rounded-[55px] border border-gray-600 overflow-hidden hover:shadow-lg transition-shadow p-10"
+              className="flex items-center space-x-2 text-gray-700"
             >
-              <img
-                src={teacher.photo}
-                alt={teacher.name}
-                className="relative left-0 right-0 mx-auto mb-8 w-48 h-48 object-cover rounded-full "
-              />
-              <h3 className="text-xl font-bold text-black text-center">{teacher.name}</h3>
-
-              <div className="p-4 bg-white  border border-gray-600 rounded-[25px] my-8">
-                <p className="text-black  mb-2">{teacher.subject}</p>
-                <ul className="list-none space-y-2">
-      {teacher.items.map((item, index) => (
-        <li
-          key={index}
-          className="flex items-center space-x-2 text-gray-700"
-        >
-          <span className="text-black">•</span>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-              </div>
-              <div className=" flex justify-center">
-                <button className="relativeleft-0 right-0 mx-auto nbg-[#f7b76f]   border border-gray-600  text-white bg-black py-2 px-4 rounded nhover:bg-[#FEAB5F] transition-colors">
-                  Ver más
-                </button>
-              </div>
-
-            </div>
+              <span className="text-black">•</span>
+              <span>{item}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </section>
+      <div className=" flex justify-center">
+        <Link href='/Profesores'>
+          <button className="relativeleft-0 right-0 mx-auto nbg-[#f7b76f]   border border-gray-600  text-white bg-black py-2 px-4 rounded nhover:bg-[#FEAB5F] transition-colors">
+            Ver más
+          </button>
+        </Link>
+      </div>
+    </div>
   );
 };
 

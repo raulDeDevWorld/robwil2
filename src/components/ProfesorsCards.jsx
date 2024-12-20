@@ -47,7 +47,7 @@ export default function ProfesorsCards() {
                     {teachers.map((teacher, index) => (
                         <div
                             key={index}
-                            className="bg-[#ffffff] shadow-md rounded-[55px] border border-gray-600 overflow-hidden hover:shadow-lg transition-shadow p-10"
+                            className="bg-[#ffffff] shadow-md rounded-[55px] border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow p-10"
                         >
                             <img
                                 src={teacher.photo}
