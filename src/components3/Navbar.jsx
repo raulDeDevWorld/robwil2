@@ -60,7 +60,7 @@ export default function Navbar() {
             <option value="ru">Русский</option>
           </select>
 
-          <button className="bg-[#ffb06f] text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-all transform hover:scale-105">
+          <button className="hidden md:inline-block bg-[#ffb06f] text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-all transform hover:scale-105">
             {t('nav.startFree')}
           </button>
         </div>

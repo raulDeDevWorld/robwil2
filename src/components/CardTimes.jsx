@@ -153,13 +153,13 @@ export default function CardPricing({ img, card }) {
 
     return (
         < div className="" >
-      <ScrollAnimation
-                   animateIn='bounceInLeft'
-                   animateOut='bounceOutLeft'
-                   initiallyVisible={true} offset={0}
-               >
+            <ScrollAnimation
+                animateIn='bounceInLeft'
+                animateOut='bounceOutLeft'
+                initiallyVisible={true} offset={0}
+            >
 
-                <div className="w-full grid grid-cols-3 gap-4 bg-white rounded-[50px] shadow-lg">
+                <div className="w-full flex flex-col-reverse md:grid grid-cols-3 gap-4 bg-white rounded-[50px] shadow-lg">
 
                     <div className="text-black col-span-2 bg-white p-10  rounded-l-[50px] ">
                         <h2 className="text-2xl mb-4 text-black">Tipo de clase: {cardPricingOne?.toUpperCase()}</h2>
@@ -193,59 +193,9 @@ export default function CardPricing({ img, card }) {
 
 
 
-                    <div className="relative bg-[#ffb06f] rounded-r-[50px] overflow-hidden  h-full ">
+                    <div className="relative bg-[#ffb06f] rounded-t-[30px] md:rounded-r-[50px] overflow-hidden  h-[50vh] md:h-full ">
 
-                        {/* 
-                <div className="relative right-0  flex items-center justify-center inset-y-0 z-20 bg-opacity-50">
-                    <div className="   bg-[#ffffff]  p-8 ring-1 shadow-2xl ring-gray-900/10 sm:mx-8 sm:rounded-b-none sm:p-10 lg:mx-0">
-                        <h3 id="tier-hobby" className="text-base/7 font-semibold text-indigo-600">
-                            Hobby
-                        </h3>
-                        <span className="mt-4 flex items-baseline gap-x-2">
-                            <span className="text-5xl font-semibold tracking-tight text-gray-900">
-                                $29
-                            </span>
-                            <span className="text-base text-gray-500">/month</span>
-                        </span>
-                        <span className="mt-6 text-base/7 text-gray-600">
-                            The perfect plan if you&apos;re just getting started with our product.
-                        </span>
-                        <ul
-                            role="list"
-                            className="mt-8 space-y-3 text-sm/6 text-gray-600 sm:mt-10"
-                        >
-                            {[
-                                "25 products",
-                                "Up to 10,000 subscribers",
-                                "Advanced analytics",
-                                "24-hour support response time",
-                            ].map((item) => (
-                                <li key={item} className="flex gap-x-3">
-                                    <svg
-                                        className="h-6 w-5 flex-none text-indigo-600"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <spanath
-                                            fillRule="evenodd"
-                                            d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <a
-                            href="#"
-                            aria-describedby="tier-hobby"
-                            className="mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10"
-                        >
-                            Get started today
-                        </a>
-                    </div>
-                </div> */}
+            
 
                         <img src={img} className="absolute w-full p-5 top-0 bottom-0 my-auto  transition-all hover:scale-105" alt="" />
                     </div>

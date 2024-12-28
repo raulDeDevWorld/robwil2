@@ -6,7 +6,7 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gray-900 pt-[70px]">
+    <div className="relative min-h-screen overflow-hidden bg-gray-900 pt-[40px] md:pt-[70px]">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 animate-gradient"></div>
       <div className="absolute inset-0"> 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-400/20 via-transparent to-transparent animate-pulse-slow"></div>
@@ -28,12 +28,12 @@ export function Hero() {
             <p className="text-xl text-gray-300 mb-8 animate-slide-up leading-relaxed">
               {t('hero.subtitle')}
             </p>
-            <div className="flex items-center space-x-4">
-              <button className="group bg-[#ffb06f] text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105 inline-flex items-center shadow-lg shadow-yellow-400/20">
+            <div className="flex flex-col md:flex-row items-center space-y-2 space-x-4">
+              <button className="w-[300px] md:w-auto text-center group bg-[#ffb06f] text-gray-900 px-20 md:px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105 inline-flex items-center shadow-lg shadow-yellow-400/20">
                 {t('hero.cta')}
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/20 hover:bg-white/10 transition-all glass-effect">
+              <button className=" w-[300px] md:w-auto text-center md:px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/20 hover:bg-white/10 transition-all glass-effect">
                 Clase gratuita
               </button>
             </div>

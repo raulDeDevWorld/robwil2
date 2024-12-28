@@ -322,8 +322,8 @@ export default function Home() {
 
         <div className="w-[90vw] max-w-[1100px] mx-auto p-6  rounded-xl shadow-lg flex flex-col items-center justify-center">
 
-          <div className=" w-full  border border-gray-200 rounded-[50px] grid grid-cols-4 mb-10">
-            <div className="w-full flex flex-col justify-around rounded-[8px] mb-6  pr-10">
+          <div className=" w-full  border border-gray-200 rounded-[50px] flex flex-col md:grid md:grid-cols-4 mb-10">
+            <div className="w-full flex md:flex-col justify-around rounded-[8px] mb-6  pr-10">
               <Button theme={cardPricingOne === 'individual' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingOne('individual')}>
                 Individual
               </Button>
@@ -342,13 +342,25 @@ export default function Home() {
             </div>
           </div>
 
-          <div className=" w-full  border border-gray-200 rounded-[50px]  grid grid-cols-4">
+          <div className=" w-full  border border-gray-200 rounded-[50px] flex flex-col md:grid grid-cols-4">
+            <div className="w-full flex  md:hidden justify-around rounded-[8px] mb-6  pl-10">
+
+              <Button theme={cardPricingTwo === '60min' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('60min')}>
+                60 min
+              </Button>
+              <Button theme={cardPricingTwo === '90min' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('90min')}>
+                90 min
+              </Button>
+              <Button theme={cardPricingTwo === 'ofertas' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('ofertas')}>
+                Ofertas
+              </Button>
+            </div>
             <div className="col-span-3 rounded-[50px]  ">
               {cardPricingOne === 'individual' && <CardTimes img='/individual.png' card={'individual'} time={cardPricingTwo}></CardTimes>}
               {cardPricingOne === 'pareja' && <CardTimes img='/pareja.png' card={'pareja'} ></CardTimes>}
               {cardPricingOne === 'grupo' && <CardTimes img='/grupo.png' card={'grupo'} ></CardTimes>}
             </div>
-            <div className="w-full flex flex-col justify-around rounded-[8px] mb-6  pl-10">
+            <div className="w-full hidden md:flex  flex-col justify-around rounded-[8px] mb-6  pl-10">
 
               <Button theme={cardPricingTwo === '60min' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('60min')}>
                 60 min
