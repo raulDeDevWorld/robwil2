@@ -216,7 +216,7 @@ export default function Home() {
         </div>
       </section> */}
       <SectionTemplate id={'about'} title={'Nuestro modo de trabajo'}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   gap-8">
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4   gap-8">
           <div className="shadow border px-5 col-span-2">
             <h3 className="text-[20px] text-black font-medium">Plataformas interactivas</h3>
             <p className="text-gray-600 pb-5">Todas las sesiones de nuestros cursos en linea se llevan a cabo en nuestra plataformas interactiva</p>
@@ -289,15 +289,15 @@ export default function Home() {
 
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10 items-center">
-          <div className="relative  w-full h-[60vh] object-cover  overflow-hidden" onClick={() => {router.push('/Checkout'); setCardPricingOne('individual'); setCardPricingTwo('60min')}}>
+          <div className="relative  w-full h-[60vh] object-cover  overflow-hidden" onClick={() => { router.push('/Checkout'); setCardPricingOne('individual'); setCardPricingTwo('60min') }}>
             <img src="/individual.png" className="bg-gray-300 p-5 hover:bg-gray-400 w-full h-[60vh] object-cover transition-all hover:scale-105" alt="" />
             <p className="absolute p-6 w-full text-white bottom-0 bg-gray-950/50">●	Индивидуальные занятия (Clases individuales)</p>
           </div>
-          <div className="relative  w-full h-[80vh] object-cover overflow-hidden" onClick={() => {router.push('/Checkout'); setCardPricingOne('pareja'); setCardPricingTwo('60min')}}>
+          <div className="relative  w-full h-[80vh] object-cover overflow-hidden" onClick={() => { router.push('/Checkout'); setCardPricingOne('pareja'); setCardPricingTwo('60min') }}>
             <img src="/pareja.png" className="bg-gray-300 p-5   hover:bg-gray-400  w-full h-[80vh] object-cover transition-all hover:scale-105" alt="" />
             <p className="absolute p-6 w-full text-white bottom-0 bg-gray-950/50">●	Индивидуальные занятия (Clases individuales)</p>
           </div>
-          <div className="relative  w-full h-[60vh] object-cover overflow-hidden" onClick={() => {router.push('/Checkout'); setCardPricingOne('grupo'); setCardPricingTwo('60min')}}>
+          <div className="relative  w-full h-[60vh] object-cover overflow-hidden" onClick={() => { router.push('/Checkout'); setCardPricingOne('grupo'); setCardPricingTwo('60min') }}>
             <img src="/grupo.png" className="bg-gray-300 p-5 hover:bg-gray-400  w-full h-[60vh] object-cover transition-all hover:scale-105" alt="" />
             <p className="absolute p-6 w-full text-white bottom-0 bg-gray-950/50">●	Индивидуальные занятия (Clases individuales)</p>
           </div>
