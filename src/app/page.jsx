@@ -320,7 +320,7 @@ export default function Home() {
         <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#ffb06f] "> </div>
         <h2 className="text-3xl font-bold text-black mb-12 text-left">Precios</h2>
 
-        <div className="w-[90vw] max-w-[1100px] mx-auto p-6  rounded-xl shadow-lg flex flex-col items-center justify-center">
+        <div className="w-[90vw] max-w-[1100px] mx-auto md:p-6 py-6 rounded-xl shadow-lg flex flex-col items-center justify-center">
 
           <div className=" w-full  border border-gray-200 rounded-[50px] flex flex-col md:grid md:grid-cols-4 mb-10">
             <div className="w-full flex md:flex-col justify-around rounded-[8px] mb-6  pr-10">

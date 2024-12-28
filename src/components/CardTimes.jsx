@@ -194,9 +194,6 @@ export default function CardPricing({ img, card }) {
 
 
                     <div className="relative bg-[#ffb06f] rounded-t-[30px] md:rounded-l-[0px] md:rounded-r-[50px] overflow-hidden  h-[50vh] md:h-full ">
-
-            
-
                         <img src={img} className="absolute w-full p-5 top-0 bottom-0 my-auto  transition-all hover:scale-105" alt="" />
                     </div>
 

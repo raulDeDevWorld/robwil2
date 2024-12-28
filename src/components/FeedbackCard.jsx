@@ -30,7 +30,7 @@ export default function FeedbackCard({ feedback, key }) {
 
     <div
       key={key}
-      className="bg-[#ffb06f] mx-5  border border-gray-200 shadow-md rounded-[55px] p-6 hover:shadow-lg transition-shadow"
+      className="bg-[#ffb06f] md:mx-5  border border-gray-200 shadow-md rounded-[55px] p-6 hover:shadow-lg transition-shadow"
     ><ScrollAnimation animateIn='fadeIn'
       animateOut='fadeOut'>
         <div className="flex items-center max-w-md mx-auto p-4 space-y-4">

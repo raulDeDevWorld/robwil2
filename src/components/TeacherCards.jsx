@@ -6,7 +6,7 @@ export default function TeacherCards({ teacher, key }) {
   return (
     <div
       key={key}
-      className="bg-[#ffb06f]  mx-5 shadow-md rounded-[50px] border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow p-10"
+      className="bg-[#ffb06f]  m-0 md:mx-5 shadow-md rounded-[50px] border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow p-10"
     >
       <div
         className="relative left-0 right-0 mx-auto mb-8 w-[150px] h-[150px] object-cover rounded-full overflow-hidden"
