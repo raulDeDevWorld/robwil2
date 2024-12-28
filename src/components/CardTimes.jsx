@@ -193,7 +193,7 @@ export default function CardPricing({ img, card }) {
 
 
 
-                    <div className="relative bg-[#ffb06f] rounded-t-[30px] md:rounded-r-[50px] overflow-hidden  h-[50vh] md:h-full ">
+                    <div className="relative bg-[#ffb06f] rounded-t-[30px] md:rounded-l-[0px] md:rounded-r-[50px] overflow-hidden  h-[50vh] md:h-full ">
 
             
 
