@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import LanguageCard from '@/components/LanguageCard';
 import TeacherCards from '@/components/TeacherCards';
 import FeedbackCard from '@/components/FeedbackCard';
-import { useState } from "react";
+import { useState, useCallback, useEffect, use } from "react";
 import { MessageSquare, Users, Award, Globe2, Video, BookOpen, Headphones, Brain, PhoneIcon } from 'lucide-react';
 
 import { AcademicCapIcon, CalendarIcon, ListBulletIcon, ClockIcon, } from '@heroicons/react/24/outline';
@@ -17,10 +17,22 @@ import "animate.css/animate.compat.css"
 // import 'react-awesome-slider/dist/styles.css';
 import MiniCard from "@/components/MiniCard";
 import Footer from "@/components/Footer";
-
+import Services from "@/components3/Services";
+import Navbar3 from "@/components3/Navbar";
+import { Hero } from '@/components3/Hero';
+import CardPricing from '@/components/CardPricing';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import Link from "next/link";
+import Button from "@/components/Button";
+import CardTimes from "@/components/CardTimes";
+import { useAppContext } from "@/context/AppContext";
 export default function Home() {
   const [activeForm, setActiveForm] = useState(1);
+  const searchParams = useSearchParams()
 
+  const { cardPricingOne, setCardPricingOne, cardPricingTwo, setCardPricingTwo } = useAppContext()
+  const searchCard = searchParams.get('card')
+  const router = useRouter()
   const languages = [
     {
       language: "Español intermedio",
@@ -53,6 +65,7 @@ export default function Home() {
       flag: "🇯🇵"
     }
   ];
+  const pathname = usePathname()
 
   const teachers = [
     {
@@ -89,7 +102,8 @@ export default function Home() {
   const [feedbacks, setFeedbacks] = useState([
     {
       name: "Ana Torres",
-      photo: "/perfil2.png", comment: "Excelente servicio y atención, muy recomendado.",
+      photo: "/perfil2.png",
+      comment: "Buena experiencia, aunque hay aspectos que mejorar.",
       rating: 5,
       adminResponse: "Gracias por tu comentario, trabajaremos en las mejoras.",
     },
@@ -103,7 +117,7 @@ export default function Home() {
     {
       name: "Carla Fernández",
       photo: "/perfil3.png",
-      comment: "La calidad del contenido superó mis expectativas.",
+      comment: "Buena experiencia, aunque hay aspectos que mejorar.",
       rating: 5,
       adminResponse: "Gracias por tu comentario, trabajaremos en las mejoras.",
     },
@@ -132,22 +146,22 @@ export default function Home() {
 
   const miniCard = [
     {
-      icon: <Video className="h-8 w-8 text-[#FEAB5F]" />,
+      icon: <Video className="h-8 w-8 text-[#ffb06f] " />,
       title: 'Clases en vivo',
       subtitle: 'Sesiones interactivas con hablantes nativos.'
     },
     {
-      icon: <BookOpen className="h-8 w-8 text-[#FEAB5F]" />,
+      icon: <BookOpen className="h-8 w-8 text-[#ffb06f] " />,
       title: 'Materiales de estudio',
       subtitle: 'Recursos y ejercicios completos.'
     },
     {
-      icon: <Headphones className="h-8 w-8 text-[#FEAB5F]" />,
+      icon: <Headphones className="h-8 w-8 text-[#ffb06f] " />,
       title: 'Aprendizaje por audio',
       subtitle: 'Práctica de escucha inmersiva.'
     },
     {
-      icon:  <Brain className="h-8 w-8 text-[#FEAB5F]" />,
+      icon: <Brain className="h-8 w-8 text-[#ffb06f] " />,
       title: 'Práctica inteligente ',
       subtitle: 'Rutas de aprendizaje impulsadas por IA.'
     }
@@ -156,15 +170,27 @@ export default function Home() {
 
   const [selected, setSelected] = useState(null);
   const options = ["Option 1", "Option 2", "Option 3"];
-  return (
-    <div className="min-h-screen">
-      <Navbar />
 
-      <section id="home" className="relative">
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+      return params.toString()
+    },
+    [searchParams]
+  )
+
+  return (
+    <div className="">
+      {/* <Navbar /> */}
+      <Navbar3 />
+
+      <Hero></Hero>
+      {/* <section id="home" className="relative">
         <Slider cantidad={1}>
           {homes.map((data, index) => <HomeCard data={data} key={index}></HomeCard>)}
         </Slider>
-        <div className="text-center lg:left-8 p-10 md:py-5 md:px-5 rounded-[20px] absolute left-0 right-0 mx-auto bottom-[0px] md:bottom-[0px] md:left-auto md:right-auto  bg-[#FEAB5F] w-[85%] rounded-b-none md:w-[400px] h-auto">
+        <div className="text-center lg:left-8 p-10 md:py-5 md:px-5 rounded-[20px] absolute left-0 right-0 mx-auto bottom-[0px] md:bottom-[0px] md:left-auto md:right-auto  bg-[#ffb06f]  w-[85%] rounded-b-none md:w-[400px] h-auto">
 
           <ScrollAnimation animateIn='flipInY'
             animateOut='flipOutY'>
@@ -176,354 +202,211 @@ export default function Home() {
           <ScrollAnimation
             animateIn='bounceInLeft'
             animateOut='bounceOutLeft'
-            initiallyVisible={false}
+            initiallyVisible={false}  offset={0}
           >
             <p className="text-[16px] text-gray-600 mb-8 max-w-3xl mx-auto">
               Aprenda de hablantes nativos y alcance la fluidez más rápido con nuestra metodología comprobada. Únase a miles de estudiantes de idiomas exitosos en todo el mundo.
             </p>
           </ScrollAnimation>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-black text-[#ffffff] text-[16px] px-8 py-3 rounded-md text-lg font-semibold border-2 border-[#000000]  hover:text-[#FEAB5F]  transition-colors">
+            <button className="bg-black text-[#ffffff] text-[16px] px-8 py-3 rounded-md text-lg font-semibold border-2 border-[#000000]  hover:text-[#ffb06f]   transition-colors">
               CLASE GRATUITA
             </button>
           </div>
         </div>
-      </section>
-
-      <section id="languages" className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gray-200">
-        <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#FEAB5F]"> </div>
-
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-left">Nuestro modo de trabajo</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   gap-8">
-            <div className="shadow border p-5 col-span-2">
-              <h3 className="text-[20px] text-black font-medium">Plataformas interactivas</h3>
-              <p className="text-gray-600 pb-5">Todas las sesiones de nuestros cursos en linea se llevan a cabo en nuestra plataformas interactiva</p>
-
-              <div className="relative w-full pb-[56.25%]">
-                <iframe
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="YouTube video player"
-                  className="absolute top-0 left-0 w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-
-            </div>
-            <div className="shadow border p-5 ">
-              <h3 className="text-[20px] text-black font-medium">Ejercicios divertidos</h3>
-              <p className="text-gray-600 pb-5">Sin tareas aburridas, libros de texto, solo ejercicios y juegos divertidos.</p>
-
-              <img src="/demo.jpg" className="w-full" alt="" />
-              <img src="/demo.jpg" className="w-full" alt="" />
-
-
-            </div>
-            <div className=" p-5 ">
-              <h3 className="text-[25px] text-black font-semibold">Mostrar como se trabajan</h3>
-              <p className="text-gray-600 pb-5">Enseñar todas la herramientas en forma de capsulas con titulo pequeño, texto y una foto o video.</p>
-
-              <button className="bg-[#FEAB5F] text-black px-4 py-2 rounded-md hover: transition-colors">
-                Descubrir más
-              </button>
-            </div>
-            <div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Languages Section */}
-      {/* <section id="servicios" className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gray-200">
-        <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#FEAB5F]"> </div>
-
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-left">Cursos populares de idiomas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {languages.map((language, index) => (
-              <LanguageCard key={index} {...language} />
-            ))}
-          </div>
-        </div>
       </section> */}
-      {/* Languages Section */}
+      <SectionTemplate id={'about'} title={'Nuestro modo de trabajo'}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   gap-8">
+          <div className="shadow border px-5 col-span-2">
+            <h3 className="text-[20px] text-black font-medium">Plataformas interactivas</h3>
+            <p className="text-gray-600 pb-5">Todas las sesiones de nuestros cursos en linea se llevan a cabo en nuestra plataformas interactiva</p>
 
-      <SectionTemplate id={'fdsf'} title={'Nuestros profesores'}>
+            <div className="relative w-full pb-[56.25%]">
+              <iframe
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="YouTube video player"
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+
+          </div>
+          <div className="shadow border p-5 ">
+            <h3 className="text-[20px] text-black font-medium">Ejercicios divertidos</h3>
+            <p className="text-gray-600 pb-5">Sin tareas aburridas, libros de texto, solo ejercicios y juegos divertidos.</p>
+
+            <img src="/demo.jpg" className="w-full" alt="" />
+            <img src="/demo.jpg" className="w-full" alt="" />
+
+
+          </div>
+          <div className=" p-5 ">
+            <h3 className="text-[25px] text-black font-semibold">Mostrar como se trabajan</h3>
+            <p className="text-gray-600 pb-5">Enseñar todas la herramientas en forma de capsulas con titulo pequeño, texto y una foto o video.</p>
+
+            <button className="bg-[#ffb06f]  text-black px-4 py-2 rounded-md hover: transition-colors">
+              Descubrir más
+            </button>
+          </div>
+          <div>
+
+          </div>
+        </div>
+      </SectionTemplate>
+      <SectionTemplate id={'teachers'} title={'Nuestros profesores'}>
         <Slider>
           {teachers.map((teacher, index) => <TeacherCards teacher={teacher} key={index}></TeacherCards>)}
         </Slider>
       </SectionTemplate>
+      <SectionTemplate id={'services'} title={'Formas de estudio'}>
+        <div className="text-black px-10">
+          <br />
+          ✔️В Skype или Google Meet на платформе школы NATIVO.ES и интерактивной доске Miro.
+          <br />
+          ✔️Презентация по теме урока и список слов с их озвучиванием.
+          <br />
+          ✔️Только аутентичные материалы (учебники, статьи, песни, видео, аудио).
+          <br />
+          ✔️Развитие всех аспектов языка. Особое внимание уделяется разговорной практике и аудированию.
+        </div>
+        <div className="w-full flex justify-center py-10">
 
 
+          <ScrollAnimation
+            animateIn='flipInY'
+            animateOut='flipOutY'
+            offset={0}
+          >
+            <div>
+              <button className="bg-black text-[#ffb06f]  px-8 py-3 rounded-md text-lg font-semibold  transition-all hover:scale-105">
+                Clase gratuita
+              </button>
+            </div>
+          </ScrollAnimation>
+        </div>
+
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10 items-center">
+          <div className="relative  w-full h-[60vh] object-cover  overflow-hidden" onClick={() => {router.push('/Checkout'); setCardPricingOne('individual'); setCardPricingTwo('60min')}}>
+            <img src="/individual.png" className="bg-gray-300 p-5 hover:bg-gray-400 w-full h-[60vh] object-cover transition-all hover:scale-105" alt="" />
+            <p className="absolute p-6 w-full text-white bottom-0 bg-gray-950/50">●	Индивидуальные занятия (Clases individuales)</p>
+          </div>
+          <div className="relative  w-full h-[80vh] object-cover overflow-hidden" onClick={() => {router.push('/Checkout'); setCardPricingOne('pareja'); setCardPricingTwo('60min')}}>
+            <img src="/pareja.png" className="bg-gray-300 p-5   hover:bg-gray-400  w-full h-[80vh] object-cover transition-all hover:scale-105" alt="" />
+            <p className="absolute p-6 w-full text-white bottom-0 bg-gray-950/50">●	Индивидуальные занятия (Clases individuales)</p>
+          </div>
+          <div className="relative  w-full h-[60vh] object-cover overflow-hidden" onClick={() => {router.push('/Checkout'); setCardPricingOne('grupo'); setCardPricingTwo('60min')}}>
+            <img src="/grupo.png" className="bg-gray-300 p-5 hover:bg-gray-400  w-full h-[60vh] object-cover transition-all hover:scale-105" alt="" />
+            <p className="absolute p-6 w-full text-white bottom-0 bg-gray-950/50">●	Индивидуальные занятия (Clases individuales)</p>
+          </div>
+        </div>
+      </SectionTemplate>
 
       {/* Methods Section */}
-
       <SectionTemplate id={'methods'} title={'Nuestro metodo'}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {miniCard.map((data, index) => <ScrollAnimation animateIn='fadeIn'>
-            <MiniCard data={data} key={index} />
-          </ScrollAnimation>)}
-        </div>
+        <Services />
       </SectionTemplate>
 
 
 
-      <SectionTemplate id={'Reseñas'} title={'Reseñas'}>
+      <SectionTemplate id={'reviews'} title={'Reseñas'}>
         <Slider>
           {feedbacks.map((feedback, index) => <FeedbackCard feedback={feedback} key={index}></FeedbackCard>)}
         </Slider>
       </SectionTemplate>
-      <section id="methods" className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gray-200">
-        <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#FEAB5F]"> </div>
+      <section id="pricing" className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gray-200">
+        <div className="absolute top-0 left-[30px] h-[8px] w-[100px] bg-[#ffb06f] "> </div>
         <h2 className="text-3xl font-bold text-black mb-12 text-left">Precios</h2>
 
         <div className="w-[90vw] max-w-[1100px] mx-auto p-6  rounded-xl shadow-lg flex flex-col items-center justify-center">
-          {/* <div className="w-full flex justify-between rounded-[8px] mb-6  bg-white">
-            <button
-              className={`px-4 py-2 rounded-[8px] w-full  ${activeForm === 1 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-              onClick={() => setActiveForm(1)}
-            >
-              Individual
-            </button>
-            <button
-              className={`px-4 py-2 rounded-[8px]  w-full ${activeForm === 2 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-              onClick={() => setActiveForm(2)}
-            >
-              Pareja
-            </button>
-            <button
-              className={`px-4 py-2 rounded-[8px] w-full ${activeForm === 3 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-              onClick={() => setActiveForm(3)}
-            >
-              Grupo
-            </button>
-          </div> */}
-          <div className=" w-full  border border-gray-200 rounded-[50px] grid grid-cols-4">
 
+          <div className=" w-full  border border-gray-200 rounded-[50px] grid grid-cols-4 mb-10">
             <div className="w-full flex flex-col justify-around rounded-[8px] mb-6  pr-10">
-              <button
-                className={`px-4 py-2 rounded-[8px] w-full  ${activeForm === 1 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-                onClick={() => setActiveForm(1)}
-              >
+              <Button theme={cardPricingOne === 'individual' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingOne('individual')}>
                 Individual
-              </button>
-              <button
-                className={`px-4 py-2 rounded-[8px]  w-full ${activeForm === 2 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-                onClick={() => setActiveForm(2)}
-              >
+              </Button>
+
+              <Button theme={cardPricingOne === 'pareja' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingOne('pareja')}>
                 Pareja
-              </button>
-              <button
-                className={`px-4 py-2 rounded-[8px] w-full ${activeForm === 3 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-                onClick={() => setActiveForm(3)}
-              >
+              </Button>
+              <Button theme={cardPricingOne === 'grupo' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingOne('grupo')}>
                 Grupo
-              </button>
+              </Button>
             </div>
-            <div className="bg-[#FEAB5F] rounded-l-[50px]  h-full ">
-              {/* <img src="" alt="" /> */}
-            </div>
-            <div className="text-black col-span-2 bg-white p-10  rounded-r-[50px] ">
-              ✔️ Проходят в Skype или Google Meet <br />
-              ✔️ На интерактивной доске Miro + платформе Progressme, отдельно высылается список слов с пройденными словами по теме урока в Quizlet <br />
-              ✔️ Используются аутентичные материалы (учебники, статьи, видео, аудио, песни) <br />
-              ✔️ Развиваются все аспекты языка. Особое внимание уделяется говорению и аудированию <br />
-              ✔️ Программа составляется под цели и запросы каждого ученика <br />
-              ✔️ Количество занятий выбирает ученик, однако для достижения большего результата рекомендуем заниматься минимум 2 раза в неделю
+            <div className="col-span-3 rounded-[50px]  max-w-full ">
+              {cardPricingOne === 'individual' && <CardPricing img='/individual.png'></CardPricing>}
+              {cardPricingOne === 'pareja' && <CardPricing img='/pareja.png'></CardPricing>}
+              {cardPricingOne === 'grupo' && <CardPricing img='/grupo.png'></CardPricing>}
             </div>
           </div>
-          {/* <div className="w-full  flex justify-between rounded-[8px] my-6 bg-white">
-            <button
-              className={`px-4 py-2 rounded-[8px] w-full  ${activeForm === 1 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-              onClick={() => setActiveForm(1)}
-            >
-              60 min
-            </button>
-            <button
-              className={`px-4 py-2 rounded-[8px]  w-full ${activeForm === 2 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-              onClick={() => setActiveForm(2)}
-            >
-              90 min
-            </button>
-            <button
-              className={`px-4 py-2 rounded-[8px] w-full ${activeForm === 3 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-              onClick={() => setActiveForm(3)}
-            >
-              Ofertas
-            </button>
-          </div> */}
-          <div className="rounded-[20px] border w-full mt-10 ">
-            {activeForm === 1 && (
-              <div className="form1 grid grid-cols-4">
-                <div className="col-span-3 rounded-[50px] grid grid-cols-3 bg-white ">
-                  <div className="col-span-2   rounded-l-[50px] p-10">
-                    <h2 className="text-2xl mb-4 text-black">Individual</h2>
-                    {/* <form className="space-y-4 grid grid-cols-2">
-                      <div>
-                        <div className=" mx-auto bg-white p-6 rounded-lg shadow-md">
-                          <ul className="space-y-4">
-                            <li className="flex items-center space-x-4">
-                              <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-                              <span className="text-lg font-medium text-black">Grupo</span>
-                            </li>
-                            <li className="flex items-center space-x-4">
-                              <CalendarIcon className="h-6 w-6 text-green-500" />
-                              <span className="text-lg font-medium  text-black">Calendario</span>
-                            </li>
-                            <li className="flex items-center space-x-4">
-                              <ListBulletIcon className="h-6 w-6 text-yellow-500" />
-                              <span className="text-lg font-medium  text-black">Pizarra</span>
-                            </li>
-                            <li className="flex items-center space-x-4">
-                              <ClockIcon className="h-6 w-6 text-red-500" />
-                              <span className="text-lg font-medium text-black">Reloj</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="mx-5 space-y-3">
-                        <input
-                          type="text"
-                          placeholder="Nombre"
-                          className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        <input
-                          type="email"
-                          placeholder="Correo Electrónico"
-                          className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        <button type="submit" className="w-full bg-[#FEAB5F] text-white py-2 rounded">
-                          Enviar
-                        </button>
 
-                      </div>
+          <div className=" w-full  border border-gray-200 rounded-[50px]  grid grid-cols-4">
+            <div className="col-span-3 rounded-[50px]  ">
+              {cardPricingOne === 'individual' && <CardTimes img='/individual.png' card={'individual'} time={cardPricingTwo}></CardTimes>}
+              {cardPricingOne === 'pareja' && <CardTimes img='/pareja.png' card={'pareja'} ></CardTimes>}
+              {cardPricingOne === 'grupo' && <CardTimes img='/grupo.png' card={'grupo'} ></CardTimes>}
+            </div>
+            <div className="w-full flex flex-col justify-around rounded-[8px] mb-6  pl-10">
 
-                    </form> */}
-
-                    <div className="flex flex-col space-y-4 bg-gray-100 p-6 rounded-lg shadow-md w-64">
-                      <h2 className="text-lg font-semibold text-gray-700 mb-2">Choose one:</h2>
-                      {options.map((option, index) => (
-                        <label
-                          key={index}
-                          className={`flex items-center space-x-3 p-3 rounded-md cursor-pointer ${selected === index ? "bg-blue-100" : "bg-white"
-                            } transition-colors duration-200 ease-in-out`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selected === index}
-                            onChange={() => setSelected(index)}
-                            className="form-checkbox h-5 w-5 text-blue-500"
-                          />
-                          <span className="text-gray-700">{option}</span>
-                        </label>
-                      ))}
-                    </div>
-
-
-
-                  </div>
-                  <div className="bg-[#FEAB5F]  rounded-r-[50px]   h-full ">
-                    {/* <img src="" alt="" /> */}
-                  </div>
-                </div>
-                <div className="w-full  flex flex-col justify-around rounded-[50px] my-6 pl-10">
-                  <button
-                    className={`px-4 py-2 rounded-[8px] w-full  ${activeForm === 1 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-                    onClick={() => setActiveForm(1)}
-                  >
-                    60 min
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-[8px]  w-full ${activeForm === 2 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-                    onClick={() => setActiveForm(2)}
-                  >
-                    90 min
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-[8px] w-full ${activeForm === 3 ? 'bg-[#FEAB5F] text-black' : 'bg-gray-100 text-black'}`}
-                    onClick={() => setActiveForm(3)}
-                  >
-                    Ofertas
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* {activeForm === 2 && (
-              <div className="form2">
-                <h2 className="text-2xl mb-4 text-black">Pareja</h2>
-                <form className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Apellido"
-                    className="w-full p-2 border border-gray-300 rounded"
-                  />
-                  <input
-                    type="password"
-                    placeholder="Contraseña"
-                    className="w-full p-2 border border-gray-300 rounded"
-                  />
-                  <button type="submit" className="w-full bg-[#FEAB5F] text-white py-2 rounded">
-                    Enviar
-                  </button>
-                </form>
-              </div>
-            )}
-
-            {activeForm === 3 && (
-              <div className="form3">
-                <h2 className="text-2xl mb-4 text-black">Grupo</h2>
-                <form className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Dirección"
-                    className="w-full p-2 border border-gray-300 rounded"
-                  />
-                  <input
-                    type="number"
-                    placeholder="Edad"
-                    className="w-full p-2 border border-gray-300 rounded"
-                  />
-                  <button type="submit" className="w-full bg-[#FEAB5F] text-white py-2 rounded">
-                    Enviar
-                  </button>
-                </form>
-              </div>
-            )} */}
+              <Button theme={cardPricingTwo === '60min' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('60min')}>
+                60 min
+              </Button>
+              <Button theme={cardPricingTwo === '90min' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('90min')}>
+                90 min
+              </Button>
+              <Button theme={cardPricingTwo === 'ofertas' ? 'MiniPrimary' : 'MiniTransparent'} click={() => setCardPricingTwo('ofertas')}>
+                Ofertas
+              </Button>
+            </div>
+          </div>
+          <div className="flex justify-center mt-10">
+            <div className="w-[300px]">
+              <Button theme={'MiniPrimary'} click={() => ''}>
+                Reserva tu clase
+              </Button>
+            </div>
           </div>
 
-          <button
-            className={`px-4 py-2 rounded-[8px] mt-10 w-full max-w-[200px] bg-[#FEAB5F] text-black`}
-            onClick={() => setActiveForm(2)}
-          >
-            Reserva tu clase
-          </button>
+
         </div>
 
 
       </section>
       {/* CTA Section */}
-      <section className="bg-[#FEAB5F] py-16 px-4 sm:px-6 lg:px-8 ">
+      <section className="bg-[#ffb06f]  py-16 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-7xl mx-auto  flex justify-between items-center">
-          <h2 className="text-3xl font-bold text-black mb-4 uppercase text-left">
-            Comienza hoy! <br />
-            APROVECHA NUESTRA <br />
-            CLASE DE PRUEBA <br />
-            GRATUITA
-          </h2>
-          <div>
-            <button className="bg-black text-[#FEAB5F] px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-50 transition-colors">
-              Realizar test
-            </button>
-          </div>
+
+          <ScrollAnimation
+            animateIn='bounceInLeft'
+            animateOut='bounceOutLeft'
+            initiallyVisible={false} offset={0}
+          >
+            <h2 className="text-3xl font-bold text-black mb-4 uppercase text-left">
+              Comienza hoy! <br />
+              APROVECHA NUESTRA <br />
+              CLASE DE PRUEBA <br />
+              GRATUITA
+            </h2>
+          </ScrollAnimation>
+          <ScrollAnimation
+            animateIn='flipInY'
+            animateOut='flipOutY'
+            offset={0}
+          >
+            <div>
+              <button className="bg-black text-[#ffb06f]  px-8 py-3 rounded-md text-lg font-semibold  transition-all hover:scale-105">
+                Realizar test
+              </button>
+            </div>
+          </ScrollAnimation>
         </div>
 
       </section>
 
       {/* Footer */}
-     <Footer></Footer>
+      <Footer></Footer>
     </div>
   );
 }

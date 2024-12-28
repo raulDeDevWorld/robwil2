@@ -71,7 +71,7 @@ export default function TemplateStore() {
 
          
                 <button
-                    className="flex items-center px-4 py-2 mt-3 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+                    className="flex items-center px-4 py-2 mt-3 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
                 >
                     Close
                 </button>

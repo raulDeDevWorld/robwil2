@@ -60,7 +60,7 @@ export default function ImageProvider({ closeModal, onImageUpload }) { // Asegú
       {/* Selector de imagen */}
       <label
         htmlFor="file-upload"
-        className="flex items-center justify-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md cursor-pointer hover:bg-gray-900 hover:text-white transition duration-300"
+        className="flex items-center justify-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md cursor-pointer hover:bg-gray-900 hover:text-white transition duration-300"
       >
         <span>Subir Imagen</span>
       </label>
@@ -96,13 +96,13 @@ export default function ImageProvider({ closeModal, onImageUpload }) { // Asegú
       <div className="flex justify-between mt-4">
         <button
           onClick={handleCancel}
-          className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+          className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
         >
           Cancel
         </button>
         <button
           onClick={handleSaveImage}
-          className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+          className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
         >
           Guardar
         </button>

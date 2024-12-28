@@ -1,17 +1,23 @@
 "use client"
 import Link from 'next/link'
+import Button from '@/components/Button'
 
 export default function TeacherCards({ teacher, key }) {
   return (
     <div
       key={key}
-      className="bg-[#FEAB5F] mx-5 shadow-md rounded-[50px] border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow p-10"
+      className="bg-[#ffb06f]  mx-5 shadow-md rounded-[50px] border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow p-10"
     >
-      <img
-        src={teacher.photo}
-        alt={teacher.name}
-        className="relative left-0 right-0 mx-auto mb-8 w-48 h-48 object-cover rounded-full "
-      />
+      <div
+        className="relative left-0 right-0 mx-auto mb-8 w-[150px] h-[150px] object-cover rounded-full overflow-hidden"
+      >
+        <img
+          src={teacher.photo}
+          alt={teacher.name}
+          className="relative left-0 right-0 mx-auto mb-8 w-[150px] h-[150px] object-cover rounded-full transition-all hover:scale-105"
+        />
+      </div>
+
       <h3 className="text-xl font-bold text-black text-center">{teacher.name}</h3>
 
       <div className="p-4 bg-white  border border-gray-200 rounded-[25px] my-8">
@@ -29,10 +35,10 @@ export default function TeacherCards({ teacher, key }) {
         </ul>
       </div>
       <div className=" flex justify-center">
-        <Link href='/Profesores'>
-          <button className="relativeleft-0 right-0 mx-auto nbg-[#f7b76f]   border border-gray-600  text-white bg-black py-2 px-4 rounded nhover:bg-[#FEAB5F] transition-colors">
+        <Link href='/Profesores' className='w-[150px]'>
+          <Button theme={'Black'} click={() => ''}>
             Ver más
-          </button>
+          </Button>
         </Link>
       </div>
     </div>

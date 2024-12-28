@@ -67,7 +67,7 @@ export default function UploadAudio({ isOpen, onClose, onAudioUpload }) {
           />
           <button
             onClick={() => document.getElementById('audio-upload').click()}
-            className="px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-[#FE9B3F] transition-colors"
+            className="px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-[#FE9B3F] transition-colors"
           >
             Elegir archivo
           </button>
@@ -83,7 +83,7 @@ export default function UploadAudio({ isOpen, onClose, onAudioUpload }) {
           </button>
           <button
             onClick={handleSave}
-            className="px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-[#FE9B3F] transition-colors"
+            className="px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-[#FE9B3F] transition-colors"
           >
             Guardar
           </button>

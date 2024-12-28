@@ -161,7 +161,7 @@ const cardData = [
 function Subtitle({ title, icon }) {
   return <div className='flex my-4  '>
     {icon}
-    <h2 className="text-xl font-semibold  text-black px-5 bg-[#FEAB5F] ml-5  rounded-b-xl rounded-tl-xl">{title} </h2>
+    <h2 className="text-xl font-semibold  text-black px-5 bg-[#ffb06f]  ml-5  rounded-b-xl rounded-tl-xl">{title} </h2>
   </div>
 }
 
@@ -195,7 +195,7 @@ export default function Dashboard() {
       <div className="space-y-8">
         <section>
           <Subtitle
-            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#ffb06f]  rounded-full" />}
             title={'Web site'}
           />
 
@@ -234,7 +234,7 @@ export default function Dashboard() {
         </section>
         <section>
           <Subtitle
-            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#ffb06f]  rounded-full" />}
             title={'Estudiantes'}
           />
 
@@ -260,7 +260,7 @@ export default function Dashboard() {
 
         <section>
         <Subtitle
-            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#ffb06f]  rounded-full" />}
             title={'Clases'}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -272,7 +272,7 @@ export default function Dashboard() {
 
         <section>
         <Subtitle
-            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text- font-semibold  text-black bg-[#ffb06f]  rounded-full" />}
             title={'Plantillas'}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -296,7 +296,7 @@ function StatCard({ title, value, icon, trend, trendDirection }) {
         <div className="text-blue-600">{icon}</div>
       </div>
       <div className="mt-2 flex items-baseline">
-        <div className="text-2xl font-semibold text-[#FEAB5F]">{value}</div>
+        <div className="text-2xl font-semibold text-[#ffb06f] ">{value}</div>
         <span className={cn(
           "ml-2 text-sm",
           trendDirection === 'up' ? 'text-green-600' : 'text-red-600'

@@ -85,7 +85,7 @@ export default function Home() {
         <Slider cantidad={1}>
           {homes.map((data, index) => <HomeCard data={data} key={index}></HomeCard>)}
         </Slider>
-        <div className="text-center lg:left-8 p-10 md:py-5 md:px-5 rounded-[20px] absolute left-0 right-0 mx-auto bottom-[0px] md:bottom-[0px] md:left-auto md:right-auto  bg-[#FEAB5F] w-[85%] rounded-b-none md:w-[400px] h-auto">
+        <div className="text-center lg:left-8 p-10 md:py-5 md:px-5 rounded-[20px] absolute left-0 right-0 mx-auto bottom-[0px] md:bottom-[0px] md:left-auto md:right-auto  bg-[#ffb06f]  w-[85%] rounded-b-none md:w-[400px] h-auto">
 
           <ScrollAnimation animateIn='flipInY'
             animateOut='flipOutY'>
@@ -97,14 +97,14 @@ export default function Home() {
           <ScrollAnimation
             animateIn='bounceInLeft'
             animateOut='bounceOutLeft'
-            initiallyVisible={false}
+            initiallyVisible={false} offset={0}
           >
             <p className="text-[16px] text-gray-600 mb-8 max-w-3xl mx-auto">
               Aprenda de hablantes nativos y alcance la fluidez más rápido con nuestra metodología comprobada. Únase a miles de estudiantes de idiomas exitosos en todo el mundo.
             </p>
           </ScrollAnimation>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-black text-[#ffffff] text-[16px] px-8 py-3 rounded-md text-lg font-semibold border-2 border-[#000000]  hover:text-[#FEAB5F]  transition-colors">
+            <button className="bg-black text-[#ffffff] text-[16px] px-8 py-3 rounded-md text-lg font-semibold border-2 border-[#000000]  hover:text-[#ffb06f]   transition-colors">
               CLASE GRATUITA
             </button>
           </div>
@@ -113,26 +113,41 @@ export default function Home() {
 
 
 
-      <ProfesorsCards/>
+      <ProfesorsCards />
 
-   
+
 
       {/* CTA Section */}
-      <section className="bg-[#FEAB5F] py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#ffb06f]  py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-black mb-4">
-            Comienza hoy...
-          </h2>
-          <p className="text-xl text-[#363636] mb-8">
-            Prueba nuestro test gratuito y descubre tu nivel.
-          </p>
-          <button className="bg-white text-[#000000] px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-50 transition-colors">
-            Realizar test
-          </button>
+          <ScrollAnimation
+            animateIn='flipInY'
+            animateOut='flipOutY'
+            offset={0}
+          >
+
+            <h2 className="text-3xl font-bold text-black mb-4">
+              Comienza hoy...
+            </h2>
+            <p className="text-xl text-[#363636] mb-8">
+              Prueba nuestro test gratuito y descubre tu nivel.
+            </p>
+          </ScrollAnimation>
+          <ScrollAnimation
+            animateIn='flipInY'
+            animateOut='flipOutY'
+            offset={0}
+          >
+            <div>
+              <button className="bg-black text-[#ffb06f]  px-8 py-3 rounded-md text-lg font-semibold  transition-all hover:scale-105">
+                Realizar test
+              </button>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
-    <Footer></Footer>
+      <Footer></Footer>
     </div>
   );
 }

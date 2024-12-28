@@ -26,10 +26,10 @@ export default function LanguageCard({
       </div>
       <div className="p-6">
         <div className="flex items-center mb-2">
-          <Globe2 className="h-5 w-5 text-[#FEAB5F] mr-2" />
+          <Globe2 className="h-5 w-5 text-[#ffb06f]  mr-2" />
           <h3 className="text-xl font-semibold text-gray-800">{language}</h3>
         </div>
-        <p className="text-[#FEAB5F] font-medium mb-4">{level}</p>
+        <p className="text-[#ffb06f]  font-medium mb-4">{level}</p>
         
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center text-gray-500">
@@ -47,8 +47,8 @@ export default function LanguageCard({
         </div>
         
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-[#FEAB5F]">{price}</span>
-          <button className="bg-[#000000] text-[#FEAB5F] px-4 py-2 rounded-md hover: transition-colors">
+          <span className="text-2xl font-bold text-[#ffb06f] ">{price}</span>
+          <button className="bg-[#000000] text-[#ffb06f]  px-4 py-2 rounded-md hover: transition-colors">
             Adquirir
           </button>
         </div>

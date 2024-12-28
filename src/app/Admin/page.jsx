@@ -48,7 +48,7 @@ function Subtitle({ title, icon, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center my-4 px-5 py-3 bg-[#FEAB5F] rounded-b-xl rounded-tl-xl hover:bg-gray-900 hover:text-white transition duration-300"
+      className="flex items-center my-4 px-5 py-3 bg-[#ffb06f]  rounded-b-xl rounded-tl-xl hover:bg-gray-900 hover:text-white transition duration-300"
     >
       {icon}
       <h2 className="text-xl font-semibold text-black ml-5">{title}</h2>
@@ -76,33 +76,33 @@ export default function Dashboard() {
       <div className="space-y-8">
         <section>
           <Subtitle
-            icon={<ArrowRight className="relative text-black font-semibold bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text-black font-semibold bg-[#ffb06f]  rounded-full" />}
             title="Web site"
           />
           <div className="flex justify-around items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <button
-              className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+              className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
               onClick={() => handleNavigation('/teachers')}
             >
               <Users className="h-5 w-5 mr-2" />
               <span className="text-sm">Teachers</span>
             </button>
             <button
-              className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+              className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
               onClick={() => handleNavigation('/Student')}
             >
               <Users className="h-5 w-5 mr-2" />
               <span className="text-sm">Estudiante</span>
             </button>
             <button
-              className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+              className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
               onClick={() => handleNavigation('/reviews')}
             >
               <Star className="h-5 w-5 mr-2" />
               <span className="text-sm">Reseñas</span>
             </button>
             <button
-              className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+              className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
               onClick={() => handleNavigation('/reviews')}
             >
               <Star className="h-5 w-5 mr-2" />
@@ -110,7 +110,7 @@ export default function Dashboard() {
             </button>
 
             <button
-              className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+              className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
               onClick={() => handleNavigation('/reviews')}
             >
               <Users className="h-5 w-5 mr-2" />
@@ -122,7 +122,7 @@ export default function Dashboard() {
         
         <section>
         <Subtitle
-            icon={<ArrowRight className="relative text-black font-semibold bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text-black font-semibold bg-[#ffb06f]  rounded-full" />}
             title="Students"
         />
           <button
@@ -136,7 +136,7 @@ export default function Dashboard() {
 
         <section>
           <Subtitle
-            icon={<ArrowRight className="relative text-black font-semibold bg-[#FEAB5F] rounded-full" />}
+            icon={<ArrowRight className="relative text-black font-semibold bg-[#ffb06f]  rounded-full" />}
             title="Clases"
             onClick={() => handleNavigation('/Classes')}
           />

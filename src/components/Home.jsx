@@ -5,9 +5,9 @@ export default function Home() {
   const isAuthenticated = typeof window !== 'undefined' && localStorage.getItem('userEmail');
 
   // Redirige al login si no está autenticado
-  if (!isAuthenticated) {
-    redirect('/login');
-  }
+  // if (!isAuthenticated) {
+  //   redirect('/login');
+  // }
 
   return (
     <div>

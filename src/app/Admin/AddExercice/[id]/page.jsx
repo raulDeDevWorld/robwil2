@@ -121,7 +121,7 @@ export default function AddExercise() {
                           <input
                             key={idx}
                             type="text"
-                            className="border-b border-gray-300 focus:border-[#FEAB5F] outline-none px-1 w-20 inline-block"
+                            className="border-b border-gray-300 focus:border-[#ffb06f]  outline-none px-1 w-20 inline-block"
                             placeholder="Completar"
                             value={userAnswers[idx] || ''} // Vinculado al estado
                             onChange={(e) => handleInputChange(idx, e.target.value)} // Actualiza el estado
@@ -141,7 +141,7 @@ export default function AddExercise() {
         <div className="flex justify-center mt-6">
           <Link href={`?modal=template`}>
             <button
-              className="flex items-center px-4 py-2 bg-[#FEAB5F] text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
+              className="flex items-center px-4 py-2 bg-[#ffb06f]  text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition duration-300"
             >
               Add Exercise
             </button>

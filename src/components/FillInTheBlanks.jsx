@@ -12,7 +12,7 @@ const parseExerciseText = (exerciseText, fillInWords, handleInputChange) => {
         <input
           key={index}
           type="text"
-          className="border-b border-gray-300 focus:border-[#FEAB5F] outline-none px-1 w-20 inline-block"
+          className="border-b border-gray-300 focus:border-[#ffb06f]  outline-none px-1 w-20 inline-block"
           placeholder="Completar"
           value={fillInWords[index] || ''}
           onChange={(e) => handleInputChange(index, e.target.value)}
@@ -104,7 +104,7 @@ export default function FillInTheBlanksModal({ isOpen, onClose, onSave }) {
           </button>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-[#FEAB5F] text-white rounded-md hover:bg-[#FE9B3F] transition-colors"
+            className="px-4 py-2 bg-[#ffb06f]  text-white rounded-md hover:bg-[#FE9B3F] transition-colors"
           >
             Cancel
           </button>

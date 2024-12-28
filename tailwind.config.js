@@ -1,17 +1,26 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      animation: {
+        'gradient': 'gradient 15s ease infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse-slow 15s ease-in-out infinite',
       },
+      keyframes: {
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+      },
+      backgroundImage: {
+        'radial-fade': 'radial-gradient(circle at center, var(--tw-gradient-stops))',
+      },
+
+
     },
+  
   },
   plugins: [],
 };
